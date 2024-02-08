@@ -1,18 +1,19 @@
 # cryo-em-project
-A simple script for cryo-EM micrographs and single particle analysis.
+### A pipeline for cryo-EM reconstruction
+:wave: Welcome to my cryo-EM project! This Python-based toolkit is designed to facilitate the reconstruction process in cryo-electron microscopy (cryo-EM), and is comprised of three main functions:
 
-:wave: Welcome to the cryo-EM project! This Python-based library integrates machine learning and computer vision functionalities to streamline cryo-electron microscopy (cryo-EM) data processing. The project is comprised of three main functions [TBC]:
-
-* **cluster_images(image_folder, num_clusters)**: This function clusters the micrographs stored in the specified image_folder using a clustering algorithm, facilitating efficient organization and analysis of the data.
-
-* **particle_picking(micrograph, template)**: Designed to enhance particle identification accuracy, this function employs template matching techniques to locate individual protein particles within a given micrograph. It compares the micrograph with a user-defined template, enabling precise particle picking while minimizing false positives.
-
-* **classify_particles(particles)**: This function categorizes the detected particles based on their features, allowing for further analysis and processing of the cryo-EM data.
+* **cluster_images(image_folder, num_clusters)**: This function clusters the micrographs stored in the specified image_folder using a clustering algorithm, facilitating efficient organisation and analysis of the data. [*TBC based on decision routine provided, may just be an image loader*]
+* **particle_picking(micrograph, template)**: Designed to enhance particle identification accuracy, this function employs template matching techniques to locate individual protein particles within a given micrograph. It compares the micrograph with a user-defined template, enabling precise particle picking while minimising false positives.
+* **classify_particles(particles)**: This function categorises the detected particles based on their features, allowing for further analysis and processing of the cryo-EM data.
 
 ### Functionality
-Images and visualisation are handled by the [PLACEHOLDER] module in cryo-em-project/images.py [TBC]. The project functionalities are outlined in the tutorial notebook and docstrings.
+The toolkit identifies whether a selection of picked particles are visually similar enough to manually selected ones.
+* **Input**: Images adapted from EMPIAR.
+* **Output**: A decision per image.
 
-### Pre-requisites [TBC]
+Images and visualisation are handled by the [*PLACEHOLDER*] module in cryo-em-project/images.py [*TBC*]. The project functionalities are outlined in the tutorial notebook and docstrings.
+
+### Pre-requisites [*TBC*]
 * Tested with python 3.12.1
 * matplotlib
 * numpy
