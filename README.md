@@ -24,3 +24,4 @@ Images and visualisation are handled by the [*PLACEHOLDER*] module in cryo-em-pr
 * scikit-learn
 * scikit-image
 * torchvision
+* Pipenv
