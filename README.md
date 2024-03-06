@@ -1,8 +1,6 @@
 # cryo-em-project
 ### A pipeline for cryo-EM reconstruction
-:wave: Welcome to my cryo-EM project! This Python-based toolkit is designed to facilitate the reconstruction process in cryo-electron microscopy (cryo-EM). 
-
-A custom class is built as part of the toolkit, comprised of three main functions:
+:wave: Welcome to my cryo-EM project! This Python-based toolkit is designed to facilitate the reconstruction process in cryo-electron microscopy (cryo-EM), and is comprised of three main functions:
 
 * **cluster_images(image_folder, num_clusters)**: This function clusters the micrographs stored in the specified image_folder using a clustering algorithm, facilitating efficient organisation and analysis of the data. [*TBC based on decision routine provided, may just be an image loader*]
 * **particle_picking(micrograph, template)**: Designed to enhance particle identification accuracy, this function employs template matching techniques to locate individual protein particles within a given micrograph. It compares the micrograph with a user-defined template, enabling precise particle picking while minimising false positives.
@@ -24,4 +22,3 @@ Images and visualisation are handled by the [*PLACEHOLDER*] module in cryo-em-pr
 * scikit-learn
 * scikit-image
 * torchvision
-* Pipenv
