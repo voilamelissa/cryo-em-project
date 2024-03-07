@@ -33,7 +33,6 @@ class cryo_em:
         """
         similarities = [np.corrcoef(image.ravel(), ref.ravel())[0, 1] for ref in reference_images]
         mean_similarity = np.mean(similarities)
-        print(f"Mean similarity: {mean_similarity}")  # Debugging line
         return mean_similarity > threshold
 
     # def load_and_display_images(image_file, num_images=4):
