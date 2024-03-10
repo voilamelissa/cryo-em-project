@@ -108,7 +108,7 @@ class cryo_em:
             cluster_images = images[labels == cluster]
             sample_indices = np.random.choice(len(cluster_images), min(len(cluster_images), n_samples), replace=False)
             for j, idx in enumerate(sample_indices):
-                axs[i, j].imshow(cluster_images[idx], cmap='grey')
+                axs[i, j].imshow(cluster_images[idx])
                 axs[i, j].axis('off')
             axs[i, 0].set_ylabel(f'Cluster {cluster}')
         # Plot graph
