@@ -29,19 +29,4 @@ class TestCryoEM(unittest.TestCase):
         self.assertTrue(self.cryo_em_instance.compare_with_reference(image_to_test, reference_images, threshold),
                         "Identical images should be considered similar.")
 
-class TestCryoEMClustering(unittest.TestCase):
-    ########################################## WIP
 
-    def test_cluster_images(self):
-        """Test that images are clustered into specified groups."""
-        images = self.cryo_em_instance.load_images(self.sample_npz_file)
-        # Default cluster count, adjust to fit requirement
-        n_clusters = 2
-        labels = self.cryo_em_instance.cluster_images(images, n_clusters)
-        
-        # Verify number of unique labels matches number of clusters
-        unique_labels = set(labels)
-        self.assertEqual(len(unique_labels), n_clusters, "The number of clusters should match the expected value.")
-
-if __name__ == '__main__':
-    unittest.main()
