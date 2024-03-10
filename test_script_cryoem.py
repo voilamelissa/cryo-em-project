@@ -29,5 +29,4 @@ class TestCryoEM(unittest.TestCase):
         self.assertTrue(self.cryo_em_instance.compare_with_reference(image_to_test, reference_images, threshold),
                         "Identical images should be considered similar.")
 
-if __name__ == '__main__':
-    unittest.main()
+
