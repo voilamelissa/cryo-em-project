@@ -4,10 +4,11 @@ from cryo_em_toolkit import cryo_em
 
 class TestCryoEM(unittest.TestCase):
 
-    def set_up(self):
-        """Set up any variables and instances needed for the tests."""
+    def setUp(self):
+        """Initialise variables and instances required for testing."""
         self.cryo_em_instance = cryo_em()
         self.sample_npz_file = './project_em_particle/all_images.npz'
+        self.images = self.cryo_em_instance.load_images(self.sample_npz_file)
 
     def test_load_images(self):
         """Test that images are loaded correctly from a .npz file."""
@@ -29,4 +30,30 @@ class TestCryoEM(unittest.TestCase):
         self.assertTrue(self.cryo_em_instance.compare_with_reference(image_to_test, reference_images, threshold),
                         "Identical images should be considered similar.")
 
+    def test_calculate_similarity(self):
+        """Test the calculation of similarity between two images."""
+        similarity = self.cryo_em_instance.calculate_similarity(self.images[0], self.images[0])
+        # Assuming perfect similarity when comparing an image to itself
+        self.assertEqual(similarity, 1.0, "The similarity of an image to itself should be 1.")
 
+    def test_hierarchical_clustering(self):
+        """Test hierarchical clustering method."""
+        n_clusters = 2  # Example: aiming to cluster into 2 groups for simplicity
+        labels = self.cryo_em_instance.hierarchical_clustering(self.images, n_clusters)
+        # Test if the correct number of clusters is returned
+        self.assertEqual(len(set(labels)), n_clusters, "The number of clusters should match the desired number.")
+
+    def test_visualise_clusters(self):
+        """Test that visualise_clusters runs without error."""
+        n_clusters = 2  
+        labels = self.cryo_em_instance.hierarchical_clustering(self.images, n_clusters)
+        try:
+            self.cryo_em_instance.visualise_clusters(self.images, labels, n_samples=5)
+            operation_successful = True
+        except Exception as e:
+            operation_successful = False
+            print(f"Careful, encountered an error during visualise_clusters execution: {e}")
+        self.assertTrue(operation_successful, "the visualise_clusters method should execute successfully.")
+
+if __name__ == '__main__':
+    unittest.main()
