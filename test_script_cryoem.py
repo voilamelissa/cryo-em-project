@@ -43,5 +43,17 @@ class TestCryoEM(unittest.TestCase):
         # Test if the correct number of clusters is returned
         self.assertEqual(len(set(labels)), n_clusters, "The number of clusters should match the desired number.")
 
+    def test_visualise_clusters(self):
+        """Test that visualise_clusters runs without error."""
+        n_clusters = 2  
+        labels = self.cryo_em_instance.hierarchical_clustering(self.images, n_clusters)
+        try:
+            self.cryo_em_instance.visualise_clusters(self.images, labels, n_samples=5)
+            operation_successful = True
+        except Exception as e:
+            operation_successful = False
+            print(f"Careful, encountered an error during visualise_clusters execution: {e}")
+        self.assertTrue(operation_successful, "the visualise_clusters method should execute successfully.")
+
 if __name__ == '__main__':
     unittest.main()

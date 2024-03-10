@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 class cryo_em:
     """A simple class for handling image data to facilitate the reconstruction process in cryo-EM."""
 
-# Step 1: Compare
+### Step 1: Compare
+    
     def load_images(self, filepath):
         """
         A function to load data in the form of images from a specified local .npz file.
@@ -49,7 +50,8 @@ class cryo_em:
         """
         return np.corrcoef(image1.ravel(), image2.ravel())[0, 1]
 
-# Step 2: Cluster
+### Step 2: Cluster
+    
     def hierarchical_clustering(self, images, n_clusters):
         """
         A function that performs basic hierarchical clustering on a set of images.
@@ -86,51 +88,29 @@ class cryo_em:
             for image_id in cluster:
                 labels[image_id] = cluster_id
         return labels
+    
+### Step 3: Visualise
+    
+    def visualise_clusters(self, images, labels, n_samples=5):
+        """
+        A function that visualises a random sample of images from each cluster.
 
-    # def load_and_display_images(image_file, num_images=4):
-    #     """
-    #     Load image data from a .npz file and display a random selection of images.
+        Parameters:
+        - images: a numpy.ndarray numpy array of images.
+        - labels: a numpy.ndarray array of cluster labels for each image.
+        - n_samples: integer with the number of images to sample from each cluster for visualisation.
+        """
+        unique_labels = set(labels)
+        n_clusters = len(unique_labels)
+        fig, axs = plt.subplots(n_clusters, n_samples, figsize=(n_samples * 2, n_clusters * 2), squeeze=False)
         
-    #     Parameters:
-    #     - image_file: Path to the .npz file containing images.
-    #     - num_images: Number of images to display.
-    #     """
-    #     data = np.load(image_file)
-    #     images = [data['arr_0'][i, :, :] for i in range(data['arr_0'].shape[0])]
-    #     print(f"Total images loaded: {len(images)}")
-
-    #     fig, axes = plt.subplots(1, num_images, sharex=True, sharey=True)
-    #     for ax, i in zip(axes, np.random.permutation(len(images))[:num_images]):
-    #         ax.imshow(images[i])
-    #         ax.set_title(f"Image {i}")
-    #     fig.tight_layout()
-    #     plt.show()
-    #     return images
-
-
-    # def cluster_images(image_folder, num_clusters): 
-    #     """
-    #     This function clusters the micrographs stored in the specified image_folder 
-    #     using a clustering algorithm, facilitating efficient organisation and analysis of the data. 
-    #     [TBC based on decision routine provided, may just be an image loader].
-    #     Parametres:
-    #     Input/Output/Return:
-    #     """
-        
-    # def particle_picking(micrograph, template): 
-    #     """
-    #     Designed to enhance particle identification accuracy, 
-    #     this function employs template matching techniques to locate individual protein 
-    #     particles within a given micrograph. It compares the micrograph with a user-defined template, 
-    #     enabling precise particle picking while minimising false positives.
-    #     Parametres:
-    #     Input/Output/Return:
-    #     """
-        
-    # def classify_particles(particles): 
-    #     """
-    #     This function categorises the detected particles based on their features, 
-    #     allowing for further analysis and processing of the cryo-EM data.
-    #     Parametres:
-    #     Input/Output/Return:
-    #     """
+        for i, cluster in enumerate(unique_labels):
+            cluster_images = images[labels == cluster]
+            sample_indices = np.random.choice(len(cluster_images), min(len(cluster_images), n_samples), replace=False)
+            for j, idx in enumerate(sample_indices):
+                axs[i, j].imshow(cluster_images[idx], cmap='grey')
+                axs[i, j].axis('off')
+            axs[i, 0].set_ylabel(f'Cluster {cluster}')
+        # Plot graph
+        plt.tight_layout()
+        plt.show()
