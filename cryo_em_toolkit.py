@@ -4,15 +4,16 @@ import matplotlib.pyplot as plt
 class cryo_em:
     """A simple class for handling image data to facilitate the reconstruction process in cryo-EM."""
 
+# Step 1: Compare
     def load_images(self, filepath):
         """
         A function to load data in the form of images from a specified local .npz file.
         
         Parameters:
-        - filepath: A string representing the path to the .npz file containing images.
+        - filepath: a string representing the path to the .npz file containing images.
         
         Returns:
-        - images: A numpy array of images loaded from the .npz file.
+        - images: a numpy array of images loaded from the .npz file.
         """
         data = np.load(filepath)
         images = data['arr_0']
@@ -23,9 +24,9 @@ class cryo_em:
         A function to compare a single image with a set of reference images to determine similarity.
         
         Parameters:
-        - image: A numpy array representing the image to compare.
-        - reference_images: A list of numpy arrays representing the reference images.
-        - threshold: A float representing the threshold for determining similarity.
+        - image: a numpy array representing the image to compare.
+        - reference_images: a list of numpy arrays representing the reference images.
+        - threshold: a float representing the threshold for determining similarity.
         
         Returns:
         - A boolean value indicating whether the image is similar to the reference images
@@ -34,6 +35,57 @@ class cryo_em:
         similarities = [np.corrcoef(image.ravel(), ref.ravel())[0, 1] for ref in reference_images]
         mean_similarity = np.mean(similarities)
         return mean_similarity > threshold
+
+    def calculate_similarity(self, image1, image2):
+        """
+        A function to calculate a similarity value between two images for categorisation.
+
+        Parameters:
+        - image1: a numpy.ndarray numpy array representing the first image.
+        - image2: a numpy.ndarray numpy array representing the second image.
+        
+        Returns:
+        - float: a correlation coefficient between the two images, indicating their similarity.
+        """
+        return np.corrcoef(image1.ravel(), image2.ravel())[0, 1]
+
+# Step 2: Cluster
+    def hierarchical_clustering(self, images, n_clusters):
+        """
+        A function that performs basic hierarchical clustering on a set of images.
+
+        Parameters:
+        - images: a numpy.ndarray numpy array of images to cluster.
+        - n_clusters: an integer with the desired number of clusters.
+
+        Returns:
+        - numpy.ndarray: an array of cluster labels for each image.
+        """
+        # Initialise clusters with each image as a separate cluster
+        clusters = [[i] for i in range(len(images))]
+
+        while len(clusters) > n_clusters:
+            # Calculate similarity matrix
+            sim_matrix = np.zeros((len(clusters), len(clusters)))
+
+            for i in range(len(clusters)):
+                for j in range(i + 1, len(clusters)):
+                    # Check against the first image in each cluster
+                    sim_matrix[i, j] = self.calculate_similarity(images[clusters[i][0]], images[clusters[j][0]])
+
+            # Find the two most similar clusters
+            i, j = np.unravel_index(sim_matrix.argmax(), sim_matrix.shape)
+
+            # Merge these clusters
+            clusters[i].extend(clusters[j])
+            del clusters[j]
+
+        # Return cluster assignments
+        labels = np.zeros(len(images), dtype=int)
+        for cluster_id, cluster in enumerate(clusters):
+            for image_id in cluster:
+                labels[image_id] = cluster_id
+        return labels
 
     # def load_and_display_images(image_file, num_images=4):
     #     """
