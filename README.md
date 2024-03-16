@@ -22,9 +22,10 @@ If you change any aspects of the code during your tinkering, such as the number 
 * matplotlib
 * numpy
 
-### Setting up your dev environment
+### Setting up your development environment
 To run this project, it's recommended to use a virtual environment to keep dependencies required from other projects separate by creating isolated environments for each project (for example, if the requirement here is Python 3, but you have a different project that also requires you to have Python 2 installed, you can prevent version conflicts and ensure that each project's dependencies are managed correctly).
 
+#### Using a Virtual Environment
 * **1. Create a virtual environment.** Navigate to the project's root directory in your terminal or command prompt, and run the following command to create a virtual environment named **env**: `python3 -m venv env` for MacOS and Linux, or `python -m venv env` for Windows.
 * **2. Activat your virtual environment.** `source env/bin/activate` for MacOS and Linux, or its `.\env\Scripts\activate` for Windows users.
 * **3. Install any dependencies.** After activating your virtual environment, you'll need to install the project's dependencies in **requirements.txt** by running `pip install -r requirements.txt`: this command will install all the required Python packages as specified.
@@ -36,3 +37,4 @@ To run this project, it's recommended to use a virtual environment to keep depen
 * scikit-learn
 * scikit-image
 * torchvision
+* Docker image
