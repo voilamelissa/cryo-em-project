@@ -1,4 +1,4 @@
-name: Python application CI/CD with Docker
+name: Python application CI/CD
 
 on:
   push:
