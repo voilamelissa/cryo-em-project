@@ -38,3 +38,5 @@ To run this project, it's recommended to use a virtual environment to keep depen
 * scikit-image
 * torchvision
 * Docker image
+
+![cryo-em illustration](https://github.com/voilamelissa/cryo-em-project/assets/23558054/d3adb136-5932-418d-b4a4-5f2ed7cdd03f)
