@@ -1,4 +1,7 @@
+<img width="1022" alt="Screenshot 2024-03-24 at 07 57 12" src="https://github.com/voilamelissa/cryo-em-project/assets/23558054/5b21c70f-1de9-4e3e-9efd-ba4a06b8bff9">
+
 # cryo-em-project
+
 ### A pipeline for cryo-EM reconstruction
 :wave: Welcome to my cryo-EM project! This Python-based toolkit is designed to facilitate the reconstruction process in cryo-electron microscopy (cryo-EM), and is comprised of three main functionalities:
 
@@ -38,5 +41,3 @@ To run this project, it's recommended to use a virtual environment to keep depen
 * scikit-image
 * torchvision
 * Docker image
-
-![cryo-em illustration](https://github.com/voilamelissa/cryo-em-project/assets/23558054/d3adb136-5932-418d-b4a4-5f2ed7cdd03f)
