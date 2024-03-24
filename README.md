@@ -1,4 +1,4 @@
-<img width="1022" alt="Screenshot 2024-03-24 at 07 57 12" src="https://github.com/voilamelissa/cryo-em-project/assets/23558054/5b21c70f-1de9-4e3e-9efd-ba4a06b8bff9">
+<img width="1355" alt="Screenshot 2024-03-24 at 07 59 26" src="https://github.com/voilamelissa/cryo-em-project/assets/23558054/a076f5b2-df0f-4c55-8f01-2f36e75175dd">
 
 # cryo-em-project
 
