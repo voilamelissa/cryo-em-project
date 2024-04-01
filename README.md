@@ -11,7 +11,7 @@
 
 ### Functionality
 The toolkit identifies whether a selection of picked particles are visually similar enough to manually selected ones.
-* **Input**: Images adapted from EMPIAR.
+* **Input**: Images adapted from [EMPIAR](https://www.ebi.ac.uk/empiar/).
 * **Output**: A decision per image, from comparing to a reference image of a particle, to classification within a dedicated cluster based on categorisation, and visualisation of the output.
 
 Images are found within the **all_images.npz** file in [cryo-em-project/project_em_particple/all_images.npz](https://github.com/voilamelissa/cryo-em-project/blob/main/project_em_particle/all_images.npz), and functionality is handled by the **cryo_em** class in [cryo-em-project/cryo_em_toolkit.py](https://github.com/voilamelissa/cryo-em-project/blob/main/cryo_em_toolkit.py). The project functionalities are outlined in the tutorial notebook ([cryoEM-notebook.ipynb](https://github.com/voilamelissa/cryo-em-project/blob/main/cryoEM%E2%80%93notebook.ipynb)) and docstrings.
