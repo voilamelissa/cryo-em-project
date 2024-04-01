@@ -34,10 +34,11 @@ To run this project, it's recommended to use a virtual environment to keep depen
 * **3. Install any dependencies.** After activating your virtual environment, you'll need to install the project's dependencies in **requirements.txt** by running `pip install -r requirements.txt`: this command will install all the required Python packages as specified.
 * **4. Deactivate your virtual environment**. Once you're done working on the project, you can deactivate the virtual environment by running `deactivate`
 
-### WIP
+### Roadmap
+Planned improvements will include investigating the following in order to improve speed and efficiency, including the current compute load required for clustering. On the list:
 * pytorch
 * scipy
 * scikit-learn
 * scikit-image
 * torchvision
-* Docker image
+* Docker for packaging the application for containerised deployments
