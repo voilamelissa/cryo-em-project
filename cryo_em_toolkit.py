@@ -137,18 +137,27 @@ class cryo_em:
         - labels: a numpy.ndarray array of cluster labels for each image.
         - n_samples: integer with the number of images to sample from each cluster for visualisation.
         """
+        if isinstance(labels, torch.Tensor):
+            labels = labels.cpu().numpy()
+
         unique_labels = set(labels)
         n_clusters = len(unique_labels)
         fig, axs = plt.subplots(n_clusters, n_samples, figsize=(n_samples * 2, n_clusters * 2), squeeze=False)
         
         for i, cluster in enumerate(unique_labels):
+            # Filter cluster images
             cluster_images = images[labels == cluster]
-            sample_indices = np.random.choice(len(cluster_images), min(len(cluster_images), n_samples), replace=False)
+            # Convert cluster_images to numpy if it's a tensor
+            if isinstance(cluster_images, torch.Tensor):
+                cluster_images = cluster_images.cpu().numpy()
+
+            # Sample indices for visualization
+            sample_indices = torch.randperm(len(cluster_images))[:min(len(cluster_images), n_samples)].tolist()
             for j, idx in enumerate(sample_indices):
-                axs[i, j].imshow(cluster_images[idx])
+                axs[i, j].imshow(cluster_images[idx], cmap='gray')
                 axs[i, j].axis('off')
             axs[i, 0].set_ylabel(f'Cluster {cluster}')
-        # Plot graph
+
         plt.tight_layout()
         plt.show()
 
