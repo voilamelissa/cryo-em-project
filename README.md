@@ -30,7 +30,7 @@ To run this project, it's recommended to use a virtual environment to keep depen
 
 #### Using a Virtual Environment
 * **1. Create a virtual environment.** Navigate to the project's root directory in your terminal or command prompt, and run the following command to create a virtual environment named **env**: `python3 -m venv env` for MacOS and Linux, or `python -m venv env` for Windows.
-* **2. Activat your virtual environment.** `source env/bin/activate` for MacOS and Linux, or its `.\env\Scripts\activate` for Windows users.
+* **2. Activate your virtual environment.** `source env/bin/activate` for MacOS and Linux, or its `.\env\Scripts\activate` for Windows users.
 * **3. Install any dependencies.** After activating your virtual environment, you'll need to install the project's dependencies in **requirements.txt** by running `pip install -r requirements.txt`: this command will install all the required Python packages as specified.
 * **4. Deactivate your virtual environment**. Once you're done working on the project, you can deactivate the virtual environment by running `deactivate`
 
